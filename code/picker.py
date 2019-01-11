@@ -38,6 +38,40 @@ class NBAPicker:
                 fIndex.append(player)
             if "C" in X["position"][player]:
                 cIndex.append(player)
-        players = knapsack.solve(salary=int(self.salary/100),cost=[x / 100 for x in X["salary"]],points=X["points"],n=X["salary"].size)
+        players = knapsack.solve(salary=int(self.salary/100),X=X,)
         print(X["player"][players])
         
+class PlayerLimits:
+    def __init__(self,pg,sg,sf,pf,c,g,f,util):
+        self.pg = pg
+        self.sg = sg
+        self.sf = sf
+        self.pf = pf
+        self.c = c
+        self.g = g
+        self.f = f
+        self.util = util
+    
+    def getPG():
+        return self.pg
+    def getSG():
+        return self.sg
+    def getSF():
+        return self.sf
+    def getPF():
+        return self.pf
+    def getC():
+        return self.c
+    def getG():
+        return self.g
+    def getF():
+        return self.f
+    def getUtil():
+        return self.util
+    
+    def setPG(x):
+        self.pg = x
+    def setSG(x):
+        self.sg = x
+    def setSF(x):
+        self.sf = x
