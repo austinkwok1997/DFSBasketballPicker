@@ -19,7 +19,7 @@ class PlayersPoints(object):
     def addPlayers(self,listOfPlayers):
         self.players = self.players + listOfPlayers
 
-def solve(salary, X):
+def solve(salary, X, limits):
     cost = [x / 100 for x in X["salary"]]
     points = X["points"]
     n = X["salary"].size

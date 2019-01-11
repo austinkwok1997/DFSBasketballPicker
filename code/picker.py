@@ -5,14 +5,7 @@ import knapsack
 
 class NBAPicker:
     def __init__(self,pg=1,sg=1,sf=1,pf=1,c=1,g=1,f=1,util=1,salary=50000):
-        self.numOfPG = pg
-        self.numOfSG = sg
-        self.numOfSF = sf
-        self.numOfPF = pf
-        self.numOfC = c
-        self.numOfG = g
-        self.numOfF = f
-        self.numOfUtil = util
+        self.limits = PlayerLimits(pg=pg,sg=sg,sf=sf,pf=pf,c=c,g=g,f=f,util=util)
         self.salary = salary
 
     def pick(self,X):
@@ -38,7 +31,7 @@ class NBAPicker:
                 fIndex.append(player)
             if "C" in X["position"][player]:
                 cIndex.append(player)
-        players = knapsack.solve(salary=int(self.salary/100),X=X,)
+        players = knapsack.solve(salary=int(self.salary/100),X=X,limits=self.limits)
         print(X["player"][players])
         
 class PlayerLimits:
@@ -52,26 +45,36 @@ class PlayerLimits:
         self.f = f
         self.util = util
     
-    def getPG():
+    def getPG(self):
         return self.pg
-    def getSG():
+    def getSG(self):
         return self.sg
-    def getSF():
+    def getSF(self):
         return self.sf
-    def getPF():
+    def getPF(self):
         return self.pf
-    def getC():
+    def getC(self):
         return self.c
-    def getG():
+    def getG(self):
         return self.g
-    def getF():
+    def getF(self):
         return self.f
-    def getUtil():
+    def getUtil(self):
         return self.util
     
-    def setPG(x):
+    def setPG(self,x):
         self.pg = x
-    def setSG(x):
+    def setSG(self,x):
         self.sg = x
-    def setSF(x):
+    def setSF(self,x):
         self.sf = x
+    def setPF(self,x):
+        self.pf = x
+    def setC(self,x):
+        self.c = x
+    def setG(self,x):
+        self.g = x
+    def setF(self,x):
+        self.f = x
+    def setUtil(self,x):
+        self.util = x
